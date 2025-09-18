@@ -7,3 +7,12 @@ interface Teacher {
   contract: boolean;
   [propName: string]: any;
 }
+
+
+const t1: Teacher = {
+    firstName: 'Melina',
+    lastName: 'Burghall',
+    fullTimeEmployee: true,
+    location: 'Guangping',
+    contract: true,
+};
