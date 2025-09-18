@@ -7,7 +7,7 @@ interface DiretorInterface {
 interface TeacherInterface{
     workFromHome() : string;
     getCoffeBreak() : string;
-    workDirectorTasks(): string;
+    workTeacherTasks(): string;
 }
 
 class Director implements DiretorInterface{
@@ -33,12 +33,12 @@ class Teacher implements TeacherInterface{
         return "Cannot have a break"
     }
 
-    workDirectorTasks(): string {
+    workTeacherTasks(): string {
         return "Getting to work"
     }
 }
 
-const createEmployee(salary: number | string): Director | Teacher {
+function createEmployee(salary: number | string): Director | Teacher {
     if (typeof salary === 'number' && salary < 500) {
         return new Teacher();
     }
@@ -48,3 +48,19 @@ const createEmployee(salary: number | string): Director | Teacher {
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
 console.log(createEmployee('$500'));
+
+
+function isDirector(employee: Director | Teacher): employee is Director{
+    return (employee as Director).workDirectorTasks != undefined;
+}
+
+function executeWork(employee: Director | Teacher): string {
+    if (isDirector(employee)){
+        return employee.workDirectorTasks();
+    }else{
+        return employee.workTeacherTasks();
+    }
+}
+
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(1000)));
