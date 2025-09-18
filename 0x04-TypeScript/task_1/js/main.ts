@@ -23,4 +23,5 @@ const teacher2 : Teacher = {
     contract: true,
 }
 
-console.log(teacher1, teacher2)
+console.log(teacher1)
+console.log(teacher2)
