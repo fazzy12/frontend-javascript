@@ -1,53 +1,48 @@
 interface Student {
-    firstname: string;
-    lastname: string;
-    age: number;
-    location: string;
+	firstName: string;
+	lastName: string;
+	age: number;
+	location: string;
 }
 
 const student1: Student = {
-    firstname: "john",
-    lastname: "doe",
-    age: 29,
-    location: "New york",
-}
+	firstName: "Zeliq",
+	lastName: "Shannon",
+	age: 40,
+	location: "Nakuru"
+};
 
 const student2: Student = {
-    firstname: "ifeanyi",
-    lastname: "kalu",
-    age: 53,
-    location: "Lagos"
-}
+        firstName: "John",
+        lastName: "Doe",
+        age: 37,
+        location: "Nairobi"
+};
 
-const studentsList: Student[] = [student1, student2]
+const studentsList: Student[] = [student1, student2];
 
+const table = document.createElement('table');
+const tbody = document.createElement('tbody');
 
-const table = document.createElement("table");
-const tableBody = document.createElement("tbody");
+table.style.background = "pink";
+table.appendChild(tbody);
 
-studentsList.forEach((student) => {
-    const row = document.createElement("tr");
+studentsList.forEach((student: Student): void => {
+  const row = document.createElement('tr');
+  const nameCell = document.createElement('td');
+  const locationCell = document.createElement('td');
 
-    const firstNameCell = document.createElement("td");
-    firstNameCell.textContent = student.firstname;
+  nameCell.textContent = student.firstName;
+  locationCell.textContent = student.location;
 
-    const lastNameCell = document.createElement("td");
-    lastNameCell.textContent = student.lastname;
+  nameCell.style.border = "1px solid pink";
+  locationCell.style.border = "1px solid pink";
+  nameCell.style.padding = "5px";
+  locationCell.style.padding = "5px";
 
-    const ageCell = document.createElement("td");
-    ageCell.textContent = student.age.toString();
-
-    const locationCell = document.createElement("td");
-    locationCell.textContent = student.location;
-
-
-    row.appendChild(firstNameCell);
-    row.appendChild(lastNameCell);
-    row.appendChild(ageCell);
-    row.appendChild(locationCell);
-    
-    tableBody.appendChild(row);
+  row.appendChild(nameCell);
+  row.appendChild(locationCell);
+  tbody.appendChild(row);
 });
 
-table.appendChild(tableBody);
 document.body.appendChild(table);
